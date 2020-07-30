@@ -1,5 +1,6 @@
 import copy
 
+# função que jogará cara ou coroa 100 vezes e guardará em uma lista
 def cointoss(coin):
   import random
   while len(coin) < 101:
@@ -9,7 +10,6 @@ def cointoss(coin):
     else:
       coin.append('T')    
   return coin
-
 
 
 def numOfStreaks(cointoss2):
@@ -33,7 +33,6 @@ def numOfStreaks(cointoss2):
         countT=0
   return cointoss2
 
-
 streaks = 0
 n = 1000
 
@@ -41,8 +40,8 @@ for i in range(n):
 
   streaks += numOfStreaks(streaks)
 
+# ainda não tenho ctz se este é o caminho para conseguir a %
 streaks2 = streaks/n
 
-print(streaks2)
-
+# % de vezes que saiu 6 caras ou 6 coroas
 print('Chance of streak: %s%%' % (streaks2 / 100))
