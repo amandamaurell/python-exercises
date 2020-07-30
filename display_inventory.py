@@ -2,7 +2,7 @@ def displayInventory(inventory):
   print("Inventory:".center(20,'-'))
   item_total = 0
   for k, v in inventory.items():
-    print( str(k.ljust(12,'.')) + ':' + str(v).rjust(6))
+    print( str(k.ljust(12,'.')) + ':' + str(v).rjust(7))
     item_total = item_total + v
   print( 'The total of items is : ' + str(item_total))
 
