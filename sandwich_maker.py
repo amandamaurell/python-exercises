@@ -87,17 +87,13 @@ elif answer == 'yes':
       mustardQ = 'Would you like mustard?\n'
       lettuceQ = 'Would you like lettuce?\n'
       tomatoQ = 'Would you like tomato?\n' 
-      mayoA = pyip.inputYesNo(mayoQ)
-      mustardA = pyip.inputYesNo(mustardQ)
-      lettuceA = pyip.inputYesNo(lettuceQ)
-      tomatoA = pyip.inputYesNo(tomatoQ)
-      if mayoA == 'yes':
+      if pyip.inputYesNo(mayoQ) == 'yes':
         sandwichPrice.append(mayoPrice)
-      if mustardA == 'yes':
+      if pyip.inputYesNo(mustardQ) == 'yes':
         sandwichPrice.append(mustardPrice)
-      if lettuceA == 'yes':
+      if pyip.inputYesNo(lettuceQ) == 'yes':
         sandwichPrice.append(lettucePrice)     
-      if tomatoA == 'yes':
+      if pyip.inputYesNo(tomatoQ) == 'yes':
         sandwichPrice.append(tomatoPrice)
     # number of sandwiches question
     if answer == 'no':
