@@ -31,16 +31,20 @@ tomatoPrice = 1.5
 
 sandwichPrice = []
 sandwichNumber = 0
+sandNum = 1
 
-#Main Loop
-while True:
-  prompt = 'Hello, whould you like a sandwich?\n'
-  answer = pyip.inputYesNo(prompt)
+prompt = 'Hello, whould you like a sandwich?\n'
+answer = pyip.inputYesNo(prompt)
+if answer == 'no':
+  print('Thank you for coming!')
+elif answer == 'yes':
+  numberAnswer = pyip.inputInt('How many sandwiches would you like?\n', min=1)
+  if numberAnswer > 1:
+    answer = pyip.inputYesNo('Are all the sandwiches the same?\n')
+  #Main Loop
+  while sandNum <= numberAnswer:
   #Main choice
-  if answer == 'no':
-    print('Thank you for coming!')
-    break
-  elif answer == 'yes':
+    print('Ok! Let\'s choose sandwich number %s'%sandNum)
     breadType = 'What type of bread would you like?\n'
     breadChoice = pyip.inputMenu(['wheat','white','sourdough'],breadType)
     # Type of bread choice
@@ -52,7 +56,7 @@ while True:
       sandwichPrice.append(sourdoughPrice)
     proteinType = 'What type of protein would you like?\n'
     proteinChoice = pyip.inputMenu(['ham','chicken','turkey','tofu'], proteinType)
-    #Protein Choice
+     #Protein Choice
     if proteinChoice == 'ham':
       sandwichPrice.append(hamPrice)
     elif proteinChoice == 'chicken':
@@ -67,14 +71,14 @@ while True:
     if cheeseA == 'yes':
       cheeseType = ('What cheese would you like?\n')
       cheeseChoice = pyip.inputMenu(['cheddar','swiss','mozzarella'],cheeseType)
-      #Cheese choice
+        #Cheese choice
       if cheeseChoice == 'cheddar':
         sandwichPrice.append(cheddarPrice)
       elif cheeseChoice == 'swiss':
         sandwichPrice.append(swissPrice)
       elif cheeseChoice == 'mozzarella':
         sandwichPrice.append(mozzarellaPrice)
-    # Main fillings choice
+      # Main fillings choice
     fillingQ = 'Would you like mayo, mustard, lettuce or tomato?\n'
     fillingA = pyip.inputYesNo(fillingQ)
     if fillingA == 'yes':
@@ -82,19 +86,26 @@ while True:
       mayoQ = 'Would you like mayo?\n'
       mustardQ = 'Would you like mustard?\n'
       lettuceQ = 'Would you like lettuce?\n'
-      tomatoQ = 'Would you like tomato?\n'
-      if pyip.inputYesNo(mayoQ) == 'yes':
+      tomatoQ = 'Would you like tomato?\n' 
+      mayoA = pyip.inputYesNo(mayoQ)
+      mustardA = pyip.inputYesNo(mustardQ)
+      lettuceA = pyip.inputYesNo(lettuceQ)
+      tomatoA = pyip.inputYesNo(tomatoQ)
+      if mayoA == 'yes':
         sandwichPrice.append(mayoPrice)
-      if pyip.inputYesNo(mustardQ) == 'yes':
+      if mustardA == 'yes':
         sandwichPrice.append(mustardPrice)
-      if pyip.inputYesNo(lettuceQ) == 'yes':
+      if lettuceA == 'yes':
         sandwichPrice.append(lettucePrice)     
-      if pyip.inputYesNo(tomatoQ) == 'yes':
+      if tomatoA == 'yes':
         sandwichPrice.append(tomatoPrice)
     # number of sandwiches question
-    numberAnswer = pyip.inputInt('How many sandwiches would you like?\n', min=1)
-    sandwichNumber += numberAnswer
-    totalAmount = sandwichNumber * sum(sandwichPrice)
-    # total amount the client has to pay.
-    print('The total amount of your order is %s$ .'%(totalAmount))
-    break
+    if answer == 'no':
+      sandNum += 1
+      continue
+    elif answer == 'yes':
+      break
+sandwichNumber += numberAnswer
+totalAmount = sandwichNumber * sum(sandwichPrice)
+# total amount the client has to pay.
+print('The total amount of your order is %s$ .'%(totalAmount))
