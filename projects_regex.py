@@ -100,7 +100,8 @@ print(dateFormat.findall('25/08/1989'))
 
 def dateCheck():
 	while True:
-		dateEntry = '25/08/1989'
+		print('When is your birthday ?\n')
+		dateEntry = input()
 		if dateFormat.search(dateEntry) == None:
 			print('Enter a valid date format. (DD/MM/YYYY)')
 			continue
@@ -119,8 +120,7 @@ def dateCheck():
 					print('Enter a valid year. From 1000 to 2999.')
 					continue
 				else:
-					print('You have entered a corrert date format :')
-					print(dateEntry)
+					print('Your birthday has been saved:\n%s' %dateEntry)
 					sys.exit()
 
 
